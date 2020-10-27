@@ -1,31 +1,26 @@
 #include "Transform.h"
-#include "visible_object.h"
 
-namespace gdh_engine {
-	namespace object {
-		Transform::Transform(ObjTransInform transform_inform)
+namespace object {
+	namespace component {
+		Transform::Transform(TransInform transform_inform)
 			: is_transform_active_(true)
 			, obj_origin_(glm::vec3(0.0))
-			, obj_position_(transform_inform.position) 
+			, obj_position_(transform_inform.position)
 			, obj_rotation_(transform_inform.rotation)
 			, obj_scale_(transform_inform.scale)
 			, model_matrix_(glm::mat4(1.0))
+		{ }
+		Transform::Transform(const Transform& other)
+			: is_transform_active_(other.is_transform_active_)
+			, obj_origin_(other.obj_origin_)
+			, obj_position_(other.obj_position_)
+			, obj_rotation_(other.obj_rotation_)
+			, obj_scale_(other.obj_scale_)
+			, model_matrix_(other.model_matrix_)
+		{ }
+		Transform::~Transform()
 		{
 
-		}
-		void Transform::Move(const glm::vec3 position)
-		{
-			this->obj_position_ += position;
-		}
-
-		void Transform::Rotate(const glm::vec3 rotation)
-		{
-			this->obj_rotation_ += rotation;
-		}
-
-		void Transform::Resize(const glm::vec3 scale)
-		{
-			this->obj_scale_ += scale;
 		}
 
 		void Transform::UpdateModelMatrix()
@@ -38,15 +33,5 @@ namespace gdh_engine {
 			this->model_matrix_ = glm::translate(this->model_matrix_, this->obj_position_ - this->obj_origin_);
 			this->model_matrix_ = glm::scale(this->model_matrix_, this->obj_scale_);
 		}
-
-		void Transform::SetActive()
-		{
-			is_transform_active_ = true;
-		}
-
-		void Transform::SetUnActive()
-		{
-			is_transform_active_ = false;
-		}
-	}	// namespace object
-}	// namespace gdh_engine
+	}	// namespace component
+} // namespace object
