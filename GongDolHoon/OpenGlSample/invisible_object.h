@@ -3,20 +3,17 @@
 
 #include "interface_object.h"
 
-namespace gdh_engine {
-	namespace object {
-		class InvisibleObject : public InterfaceObject
-		{
-		public:
-			InvisibleObject();
-			virtual ~InvisibleObject();
+namespace object {
+	class LoaderParams;
 
-			virtual void Update() override;
+	class InvisibleObject : public InterfaceObject
+	{
+	public:
+		InvisibleObject(LoaderParams* p_param = NULL);
+		virtual ~InvisibleObject();
 
-		private:
-
-		};
-	}	// namespace object
-}	// namespace gdh_engine
+		virtual void Update() override;
+	};
+}	// namespace object
 
 #endif // GDH_ENGINE_INVISIBLE_OBJECT_H

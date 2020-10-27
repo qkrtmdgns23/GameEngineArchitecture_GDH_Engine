@@ -1,20 +1,18 @@
 #include "invisible_object.h"
 
-namespace gdh_engine {
-	namespace object {
-		InvisibleObject::InvisibleObject()
-		{
+namespace object {
+	InvisibleObject::InvisibleObject(LoaderParams* p_param)
+		:InterfaceObject(p_param)
+	{
+	}
 
-		}
+	InvisibleObject:: ~InvisibleObject()
+	{
 
-		InvisibleObject:: ~InvisibleObject()
-		{
+	}
 
-		}
+	void InvisibleObject::Update()
+	{
 
-		void InvisibleObject::Update()
-		{
-
-		}
-	}	// namespace object
-}	// namespace gdh_engine
+	}
+}	// namespace object
