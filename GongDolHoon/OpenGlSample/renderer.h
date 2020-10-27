@@ -3,65 +3,70 @@
 
 #include "include/GLFW/glfw3.h" 
 
-// custom header
-#include "visible_object.h"
-#include "camera.h"
-
-namespace gdh_engine {
-	namespace manager {
-		class Renderer {
-		public:
-			void ClearWindowToRender();
-			void SwapBuffearsOnWindow();
-			bool IsWindowShouldClose();
-
-			void ShutDown();
-
-			GLFWwindow* get_engine_window() const
+#include <string>
+namespace system_2 {
+	class Renderer {
+	#pragma region SINGLETON_PATTERN
+	public:
+		static Renderer* get_instance()
+		{
+			if (instance_ == nullptr)
 			{
-				return engine_window_;
+				instance_ = new Renderer("GDH_ENGINE_VER2"
+					, 3, 3, 1024, 768);
 			}
+			return instance_;
+		}
 
-			static Renderer* get_instance()
-			{
-				if (instance_ == nullptr)
-				{
-					instance_ = 
-						new Renderer("GDH_ENGINE(VER1.0.4)", 3, 3);
-				}
+		~Renderer() {
+		
+		}
 
-				return instance_;
-			}
+	private:
+		Renderer(std::string window_title
+			, unsigned int gl_major_version, unsigned int gl_minor_version
+			, unsigned int window_width, unsigned int window_height);
+		Renderer(const char* window_title
+			,unsigned int gl_major_version, unsigned int gl_minor_version
+			,unsigned int window_width, unsigned int window_height);
 
-			void ConvertCoordinatesForRender(object::Camera* camera, object::VisibleObject* target_object);
-			void Render(object::VisibleObject* target_obj);
+		static Renderer* instance_;
+	#pragma endregion
+	public:
+		inline void ClearWindow() const;
+		inline void SwapBuffer() const;
+		inline bool IsWindowClosed();
 
-			// it's callback function in openGL
-			static void ResizeWindowFrameBuffer(GLFWwindow* window, int fbw, int fbh);
+	private:
+		unsigned int window_width_;
+		unsigned int window_height_;
+		unsigned int opengl_major_version_;
+		unsigned int opengl_minor_version_;
+		std::string window_title_;
+		GLFWwindow* opengl_window_;
+	};
+	void Renderer::ClearWindow() const
+	{
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	}
+	void Renderer::SwapBuffer() const
+	{
+		glfwSwapBuffers(opengl_window_);
+		glfwPollEvents();
+	}
 
-			const unsigned int kGlfwContextMajorVersion;
-			const unsigned int kGlfwContextMinorVersion;
-
-		private:
-			// this constructor don't need string overloaded function becuase of singleton.
-			Renderer(const char* title, const unsigned int kMajorVersion, 
-				const unsigned int kMinorVersion,
-				const unsigned int kWindowHeight = 724, const unsigned int kWindowWidth = 1028);
-			~Renderer() {}
-
-			static Renderer* instance_;
-
-			size_t window_width_;
-			size_t window_height_;
-
-			glm::mat4 projection_matrix_;
-			glm::mat4 view_matrix_;
-
-			std::string engine_window_title_;
-
-			GLFWwindow* engine_window_;
-		};
-	} // namespace manager
-} // namespace gdh_engine
+	bool Renderer::IsWindowClosed()
+	{
+		if (glfwWindowShouldClose(this->opengl_window_))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+} // namespace system_2
 
 #endif // GDH_ENGINE_RENDERER_H
