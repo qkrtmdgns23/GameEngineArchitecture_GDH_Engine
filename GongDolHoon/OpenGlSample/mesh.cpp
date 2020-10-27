@@ -1,5 +1,4 @@
-#include "include/GL/glew.h"	
-#include "mesh.h"
+	#include "mesh.h"
 #include "file_manager.h"
 
 namespace object {

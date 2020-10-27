@@ -3,8 +3,9 @@
 
 #include <vector>
 #include <string>
-#include "glm/glm.hpp"
+#include "include/GL/glew.h"
 #include "include/GLFW/glfw3.h" 
+#include "glm/glm.hpp"
 
 #include "interface_component.h"
 #include "loader_params.h"
@@ -32,8 +33,8 @@ namespace object {
 		#pragma region RELATED_WITH_OPENGL
 			void GenerateAndBindVertexArrayObject();
 			void GenerateAndBindVertexBufferObject();
-			inline void UnbindVertexBufferObject() const;
-			inline void UnbindVertexArrayObject() const;
+			inline void UnbindVertexBufferObject();
+			inline void UnbindVertexArrayObject();
 
 			GLuint vertex_array_object_identity_;
 			GLuint vertex_buffer_object_identity_;
@@ -61,11 +62,11 @@ namespace object {
 			assert(false <= is_mesh_active_ <= true);
 			return is_mesh_active_;
 		}
-		void Mesh::UnbindVertexBufferObject() const
+		void Mesh::UnbindVertexBufferObject()
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
-		void Mesh::UnbindVertexArrayObject() const
+		void Mesh::UnbindVertexArrayObject() 
 		{
 			glBindVertexArray(0);
 		}
