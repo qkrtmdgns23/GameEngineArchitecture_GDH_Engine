@@ -35,7 +35,9 @@ namespace system_2 {
 	public:
 		inline void ClearWindow() const;
 		inline void SwapBuffer() const;
-		inline bool IsWindowClosed();
+		inline bool IsWindowClosed() const;
+
+		inline GLFWwindow* get_opengl_window() const;
 
 	private:
 		unsigned int window_width_;
@@ -56,7 +58,7 @@ namespace system_2 {
 		glfwPollEvents();
 	}
 
-	bool Renderer::IsWindowClosed()
+	bool Renderer::IsWindowClosed() const
 	{
 		if (glfwWindowShouldClose(this->opengl_window_))
 		{
@@ -66,6 +68,11 @@ namespace system_2 {
 		{
 			return false;
 		}
+	}
+
+	GLFWwindow* Renderer::get_opengl_window() const
+	{
+		return opengl_window_;
 	}
 } // namespace system_2
 
