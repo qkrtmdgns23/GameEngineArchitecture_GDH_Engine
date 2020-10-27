@@ -34,9 +34,9 @@ namespace system_2 {
 	public:
 	#pragma region GAME_METHODS
 		inline bool SystemRunning() const;
-		void HandleEvents();
+		void HandleEvents() const;
 		void Update();
-		void Render();
+		void Render() const;
 		inline void Exit();
 	#pragma endregion
 	private: 
