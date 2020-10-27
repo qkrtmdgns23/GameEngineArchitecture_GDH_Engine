@@ -1,7 +1,9 @@
-// library
+// Input version of engine when you used.
+#define GDH_ENGINE_VERSION_2
+
+#if defined (GDH_ENGINE_VERSION_1)
 #include "include/GL/glew.h"		
 
-// custom header
 #include "renderer.h"
 #include "texture.h"
 #include "input_manager.h"
@@ -40,3 +42,35 @@ int main(void)
 
     return 0;
 }
+#endif // GDH_ENGINE_VERSION_01
+
+#if defined (GDH_ENGINE_VERSION_2)
+
+#include "cstdio"
+#include "game.h"
+#include "error_manager.h"
+
+using namespace system;
+
+int main(void)
+{
+    if (Game::get_instance()->InitRenderingEnvironment
+        ("GDH_ENGINE_VERSION_2", 3, 3, 1028, 724))
+    {
+        while (Game::get_instance()->SystemRunning())
+        {
+            Game::get_instance()->HandleEvents();
+            Game::get_instance()->Update();
+            Game::get_instance()->Render();
+        }
+    }
+    else
+    {
+        fprintf(stderr, "Error Occured: %d", ErrorType::kInitFailed);
+        return -1;
+    }
+    Game::get_instance()->Exit();
+
+    return 0;
+}
+#endif // GDH_ENGINE_VERSION_02
