@@ -1,15 +1,14 @@
 #include "input_manager.h"
 
-namespace gdh_engine {
-	namespace manager {
-		InputManager* InputManager::instance_ = nullptr;
+namespace system_2
+{
+	InputManager* InputManager::instance_ = nullptr;
 
-		void InputManager::ProcessInput(GLFWwindow* window)
+	void InputManager::ProcessInput(GLFWwindow* window)
+	{
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
-			if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			{
-				glfwSetWindowShouldClose(window, true);
-			}
+			glfwSetWindowShouldClose(window, true);
 		}
-	}	// namespace manager
-}	// namespace gdh_engine
+	}
+}	// namespace manager

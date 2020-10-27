@@ -3,31 +3,30 @@
 
 #include "include/GLFW/glfw3.h" 
 
-namespace gdh_engine {
-	namespace manager {
-		// InputManager class was written as singleton pattern.
-		class InputManager
+namespace system_2 {
+	// InputManager class was written as singleton pattern.
+	class InputManager
+	{
+	public:
+		void ProcessInput(GLFWwindow* window);
+
+	#pragma region SINGLETON_PATTERN
+		static InputManager* get_instance()
 		{
-		public:
-			void ProcessInput(GLFWwindow* window);
-
-			static InputManager* get_instance()
+			if (instance_ == nullptr)
 			{
-				if (instance_ == nullptr)
-				{
-					instance_ = new InputManager();
-				}
-				return instance_;
+				instance_ = new InputManager();
 			}
-		private:
-			InputManager() {}
-			InputManager(const InputManager& other);
-			~InputManager() {}
-
-			static InputManager* instance_;
-		};
-	} // namespace manager
-} // namespace gdh_engine
-
+			return instance_;
+		}
+		~InputManager() {}
+	private:
+		InputManager() {}
+		InputManager(const InputManager& other);
+		
+		static InputManager* instance_;
+	#pragma endregion
+	};
+} // namespace system_2
 #endif // GDH_ENGINE_INPUT_MANAGER_H
 
