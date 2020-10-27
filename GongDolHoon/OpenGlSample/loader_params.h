@@ -35,16 +35,20 @@ namespace object {
 	public:
 		LoaderParams(std::string vertex_path, std::string fragment_path,
 			std::string texture_path, std::string obj_path, 
-			TransInform trans_inform, TextureDimensionalType is_texture_3d, 
-			TextureAlphaType is_texture_alpha)
+			TextureDimensionalType is_texture_3d, 
+			TextureAlphaType is_texture_alpha,
+			TransInform trans_inform = { glm::vec3(0.f),
+			glm::vec3(0.f), glm::vec3(1.f) })
 			: vertex_path_(vertex_path), fragment_path_(fragment_path)
 			, texture_path_(texture_path), obj_path_(obj_path)
 			, trans_inform_(trans_inform), is_3D_(is_texture_3d)
 			, is_alpha_(is_texture_alpha){}
 		LoaderParams(const char* vertex_path, const char* fragment_path,
 			const char* texture_path, const char* obj_path,
-			TransInform trans_inform, TextureDimensionalType is_texture_3d,
-			TextureAlphaType is_texture_alpha)
+			TextureDimensionalType is_texture_3d,
+			TextureAlphaType is_texture_alpha,
+			TransInform trans_inform = { glm::vec3(0.f),
+			glm::vec3(0.f), glm::vec3(1.f) })
 			: vertex_path_(vertex_path), fragment_path_(fragment_path)
 			, texture_path_(texture_path), obj_path_(obj_path)
 			, trans_inform_(trans_inform), is_3D_(is_texture_3d)
@@ -55,9 +59,9 @@ namespace object {
 		inline std::string get_texture_path() const;
 		inline std::string get_obj_path() const;
 		inline TransInform get_trans_inform() const;
-		inline bool IsTexture3D() const;
-		inline bool IsTextureAlpha() const;
-	private:
+		inline TextureDimensionalType IsTexture3D() const;
+		inline TextureAlphaType IsTextureAlpha() const;
+	protected:
 		std::string vertex_path_;
 		std::string fragment_path_;
 		std::string texture_path_;
@@ -86,14 +90,30 @@ namespace object {
 	{
 		return trans_inform_;
 	}
-	bool LoaderParams::IsTexture3D() const
+	TextureDimensionalType LoaderParams::IsTexture3D() const
 	{
-		return static_cast<bool>(is_3D_);
+		return is_3D_;
 	}
-	bool LoaderParams::IsTextureAlpha() const
+	TextureAlphaType LoaderParams::IsTextureAlpha() const
 	{
-		return static_cast<bool>(is_alpha_);
+		return is_alpha_;
 	}
 
+	namespace primitive {
+		class SphereParams : public LoaderParams
+		{
+		public:
+			SphereParams()
+				: LoaderParams("resource/shaders/sphere_vs.glsl",
+					"resource/shaders/sphere_fs.glsl", 
+					"resource/jpg/container.jpg", 
+					"resource/obj/sphere.obj", 
+					object::TextureDimensionalType::k2D,
+					object::TextureAlphaType::kRGB)
+			{}
+		private:
+
+		};
+	}	// namespace primitive
 } // namespace object
 #endif // GDH_ENGINE_LOADER_PARAMS_H
