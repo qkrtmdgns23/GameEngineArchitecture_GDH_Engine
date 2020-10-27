@@ -2,62 +2,58 @@
 #define GDH_ENGINE_TEXTURE_H
 
 #include <string>
-
-// library
 #include "include/GL/glew.h"	
 
 #include "interface_component.h"
+#include "loader_params.h"
 
-namespace gdh_engine {
-	namespace object {
-		enum class TextureType;
-
+namespace object {
+	namespace component {
 		class Texture : public InterfaceComponent
 		{
 		public:
-			Texture(std::string texture_path, TextureType type_of_texture, TextureType alpha_data_type);
-			Texture(const char* texture_path, TextureType type_of_texture, TextureType alpha_data_type);
+		#pragma region CONSTRUCTOR_DESTRUCTOR
+			Texture(std::string texture_path, TextureDimensionalType type_of_texture, 
+				TextureAlphaType alpha_data_type);
+			Texture(const char* texture_path, TextureDimensionalType type_of_texture,
+				TextureAlphaType alpha_data_type);
 			~Texture() {}
+		#pragma endregion
+			inline virtual void SetActive() final;
+			inline virtual void SetUnActive() final;
 
-			virtual void SetActive() final;
-			virtual void SetUnActive() final;
-
-			bool get_is_texture_active() const
-			{
-				return is_texture_active_;
-			}
-
-			GLuint get_texture_id() const
-			{
-				if(is_texture_active_)
-				{
-					return texture_id_;
-				}
-				else
-				{
-					return 0;
-				}
-			}
+			inline GLuint get_texture_id() const;
 
 		private:
+		#pragma region TEXTURE_INFORM
 			GLuint texture_id_;
-
 			int texture_width_;
 			int texture_height_;
 			int texture_nr_channels_;
-
+		#pragma endregion
 			bool is_texture_active_;
 		};
-
-		enum class TextureType
+		void Texture::SetActive()
 		{
-			k2DimensionalTexture = 0,
-			k3DimensionalTexture,
-			kRGBTexture,
-			kRGBATexture,
-		};
+			is_texture_active_ = true;
+		}
 
-	} // namespace object
-} // namespace gdh_engine
+		void Texture::SetUnActive()
+		{
+			is_texture_active_ = false;
+		}
 
+		GLuint Texture::get_texture_id() const
+		{
+			if (is_texture_active_)
+			{
+				return texture_id_;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}	// namespace component
+}	// namespace object
 #endif // GDH_ENGINE_TEXTURE_H
