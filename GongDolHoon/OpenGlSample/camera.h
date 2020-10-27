@@ -30,10 +30,12 @@ namespace object {
 		~Camera() {}
 
 	private:
-		Camera(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f),
-			glm::vec3 up = glm::vec3(0.f, 0.f, -10.f), float yaw = -90.f, float pitch = 0.f);
+		Camera(glm::vec3 position = glm::vec3(0.f),
+			glm::vec3 up = glm::vec3(0.f, 0.f, -10.f), 
+			float yaw = -90.f, float pitch = 0.f);
 		Camera(float pos_x, float pos_y, float pos_z,
-			float up_x, float up_y, float up_z, float yaw, float pitch);
+			float up_x, float up_y, float up_z, float yaw, 
+			float pitch);
 		static Camera* instance_;
 	#pragma endregion
 	public:
@@ -46,7 +48,7 @@ namespace object {
 		inline float get_yaw() const;
 		inline float get_pitch() const;
 		inline float get_zoom() const;
-		inline void set_camera_position(glm::vec3 target_position);
+		inline void set_position(glm::vec3 target_position);
 	private:
 		void UpdateCameraVectors();
 
@@ -97,7 +99,7 @@ namespace object {
 	{
 		return zoom_;
 	}
-	void Camera::set_camera_position(glm::vec3 target_position)
+	void Camera::set_position(glm::vec3 target_position)
 	{
 		position_ = target_position;
 	}

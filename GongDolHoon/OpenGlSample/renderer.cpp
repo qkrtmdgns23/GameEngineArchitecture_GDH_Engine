@@ -1,7 +1,6 @@
-#include "include/GL/glew.h"	
-
 #include "renderer.h"
 #include "error_manager.h"
+#include "camera.h"
 
 namespace system_2 {
 	Renderer* Renderer::instance_ = nullptr;
@@ -12,6 +11,8 @@ namespace system_2 {
 		: window_title_(window_title), opengl_major_version_(gl_major_version)
 		, opengl_minor_version_(gl_minor_version) 
 		, window_width_(window_width), window_height_(window_height)
+		,projection_matrix_(glm::mat4(0.f))
+		, view_matrix_(glm::mat4(0.f))
 	{
 		if (!glfwInit())
 		{
@@ -44,6 +45,8 @@ namespace system_2 {
 		: opengl_major_version_(gl_major_version)
 		, opengl_minor_version_(gl_minor_version)
 		, window_width_(window_width), window_height_(window_height)
+		, projection_matrix_(glm::mat4(0.f))
+		, view_matrix_(glm::mat4(0.f))
 	{
 		window_title_ = window_title;
 		opengl_window_ = NULL;
@@ -73,5 +76,17 @@ namespace system_2 {
 			glfwTerminate();
 		}
 		glEnable(GL_DEPTH_TEST);
+	}
+
+	void Renderer::ConvertCoordinatesBasedOnCamera
+		(object::VisibleObject* target_object)
+	{
+		projection_matrix_ = glm::perspective
+			(glm::radians(object::Camera::get_instance()->get_zoom()),
+			(float)1024 / 728, 0.1f, 100.0f);
+		view_matrix_ = object::Camera::get_instance()
+			->get_view_matrix();
+		target_object->SendProjectionAndViewMatrixToShader
+			(projection_matrix_, view_matrix_);
 	}
 }	// namespace system_2

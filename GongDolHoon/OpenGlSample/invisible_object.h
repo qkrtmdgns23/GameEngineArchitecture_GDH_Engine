@@ -13,6 +13,8 @@ namespace object {
 		virtual ~InvisibleObject();
 
 		virtual void Update() override;
+		virtual void Render() const override;
+		virtual void Clean() override;
 	};
 }	// namespace object
 

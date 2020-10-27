@@ -3,8 +3,11 @@
 
 #include <iostream>
 #include <string>
+
+#include "include/GL/glew.h"		
 #include "include/GLFW/glfw3.h" 
 #include "renderer.h"
+#include "play_state.h"
 
 #pragma comment(lib, "OpenGL32.lib")
 #pragma comment(lib, "lib-vc2017/glew32.lib")
@@ -54,6 +57,7 @@ namespace system_2 {
 
 	void Game::Exit()
 	{
+		PlayState::get_instance()->OnExit();
 		glfwTerminate();
 		running_ = false;
 	}

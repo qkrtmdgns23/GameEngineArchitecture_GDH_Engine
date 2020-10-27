@@ -4,10 +4,6 @@
 // custom header
 #include "visible_object.h"
 #include "shader.h"
-#include "mesh.h"
-#include "texture.h"
-#include "transform.h"
-
 
 namespace object {
 	using namespace component;
@@ -38,31 +34,45 @@ namespace object {
 #pragma endregion
 	void VisibleObject::Update()
 	{
+		SetObjectRotation(
+			glm::vec3(glfwGetTime() * 10.f, 0.f, 0.f));
+	}
+	void VisibleObject::Clean()
+	{
 
 	}
-
 	void VisibleObject::Render() const
 	{
-		object_shader_->SetMatrix4TypeUniformVariable("model", object_transform_->get_model_matrix());
-		glBindVertexArray(object_mesh_->get_vertex_array_object_identity());
-		glDrawArrays(GL_TRIANGLES, 0, object_mesh_->get_num_of_vertices());
+		ActiveTextureRendering();
+		object_shader_->SetMatrix4TypeUniformVariable
+			("model", object_transform_->get_model_matrix());
+		glBindVertexArray
+			(object_mesh_->get_vertex_array_object_identity());
+		glDrawArrays
+			(GL_TRIANGLES, 0, object_mesh_->get_num_of_vertices());
 	}
 	void VisibleObject::SendProjectionAndViewMatrixToShader
 	(glm::mat4 projection, glm::mat4 view)
 	{
-		object_shader_->SetMatrix4TypeUniformVariable("projection", projection);
-		object_shader_->SetMatrix4TypeUniformVariable("view", view);
+		object_shader_->
+			SetMatrix4TypeUniformVariable("projection", projection);
+		object_shader_->
+			SetMatrix4TypeUniformVariable("view", view);
 	}
 	void VisibleObject::SetTextureUniformToShader
 	(std::string tex_uniform_name, unsigned int tex_num) const
 	{
 		object_shader_->UseShader();
-		object_shader_->SetIntegerDataTypeUniformVariable(tex_uniform_name, tex_num);
+		object_shader_->
+			SetIntegerDataTypeUniformVariable
+			(tex_uniform_name, tex_num);
 	}
 	void VisibleObject::SetTextureUniformToShader
 	(const char* tex_uniform_name, unsigned int tex_num) const
 	{
 		object_shader_->UseShader();
-		object_shader_->SetIntegerDataTypeUniformVariable(tex_uniform_name, tex_num);
+		object_shader_->
+			SetIntegerDataTypeUniformVariable
+			(tex_uniform_name, tex_num);
 	}
 }	// namespace 

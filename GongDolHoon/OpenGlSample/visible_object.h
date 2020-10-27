@@ -28,19 +28,19 @@ namespace object {
 	#pragma endregion
 		// Overriding
 		virtual void Update() override;
+		virtual void Render() const override;
+		virtual void Clean() override;
 
 		inline void SetupMesh();
+	#pragma region RELATE_WITH_SHADERS
 		void SetTextureUniformToShader
-			(std::string tex_uniform_name, unsigned int tex_num) const;
+		(std::string tex_uniform_name, unsigned int tex_num) const;
 		void SetTextureUniformToShader
-			(const char* tex_uniform_name, unsigned int tex_num) const;
-		inline void ActiveTextureRendering() const;
-
-		void Render() const;
+		(const char* tex_uniform_name, unsigned int tex_num) const;
 		void SendProjectionAndViewMatrixToShader
-			(glm::mat4 projection, glm::mat4 view);
-
-		// About Transform
+		(glm::mat4 projection, glm::mat4 view);
+	#pragma endregion
+	#pragma region TRANSFORM_COMPONENT_METHODS
 		inline void SetObjectTransform(TransInform target_transform);
 		inline void SetObjectPosition(glm::vec3 target_position);
 		inline void SetObjectRotation(glm::vec3 target_rotation);
@@ -48,16 +48,17 @@ namespace object {
 		inline void MoveObject(glm::vec3 position);
 		inline void RotateObject(glm::vec3 rotation);
 		inline void ResizeObject(glm::vec3 scale);
-
-		// About Component Active
+	#pragma endregion
+	#pragma region COMPONENT_ACTIVE_METHODS_DECLARED
 		inline void SetTextureActive();
 		inline void SetTransformActive();
 		inline void SetMeshActive();
 		inline void SetTextureUnActive();
 		inline void SetTransformUnActive();
 		inline void SetMeshUnActive();
-
+	#pragma endregion
 	private:
+		inline void ActiveTextureRendering() const;
 		Texture* object_texture_;
 		Shader* object_shader_;
 		Mesh* object_mesh_;
@@ -70,6 +71,7 @@ namespace object {
 	{
 		object_mesh_->SetUpMesh();
 	}
+	#pragma region TRANSFORM_COMPONENT_METHODS
 	void VisibleObject::SetObjectTransform(TransInform target_transform)
 	{
 		object_transform_->set_position(target_transform.position);
@@ -100,11 +102,13 @@ namespace object {
 	{
 		object_transform_->Resize(scale);
 	}
+	#pragma endregion
 	void VisibleObject::ActiveTextureRendering() const
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, object_texture_->get_texture_id());
 	}
+	#pragma region COMPONENT_ACTIVE_METHODS_DEFINED
 	void VisibleObject::SetTextureActive()
 	{
 		object_texture_->SetActive();
@@ -129,6 +133,7 @@ namespace object {
 	{
 		object_mesh_->SetUnActive();
 	}
+	#pragma endregion
 }	// namespace object
 
 #endif // GDH_ENGINE_VISIBLE_OBJECT_H

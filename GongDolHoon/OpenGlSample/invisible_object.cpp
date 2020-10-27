@@ -15,4 +15,12 @@ namespace object {
 	{
 
 	}
+	void InvisibleObject::Render() const
+	{
+
+	}
+	void InvisibleObject::Clean()
+	{
+
+	}
 }	// namespace object

@@ -4,6 +4,7 @@
 #include "include/GL/glew.h"		
 #include "include/GLFW/glfw3.h" 
 
+#include "camera.h"
 #include "interface_game_state.h"
 
 namespace system_2 {
@@ -31,8 +32,11 @@ namespace system_2 {
 			return instance_;
 		}
 	private:
-		PlayState() {}
+		PlayState() {
+			play_state_camera_ = object::Camera::get_instance();
+		}
 		static PlayState* instance_;
+		object::Camera* play_state_camera_;
 	#pragma endregion
 	};
 
