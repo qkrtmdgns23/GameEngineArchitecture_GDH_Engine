@@ -1,15 +1,16 @@
 #ifndef GDH_ENGINE_INTERFACE_OBJECT_H
 #define GDH_ENGINE_INTERFACE_OBJECT_H
 
-namespace gdh_engine {
-	namespace object {
-		class InterfaceObject {
-		public:
-			virtual ~InterfaceObject() {}
+#include "loader_params.h"
 
-			virtual void Update() = 0;
-		};
-	} // namespace object
-}	// namespace gdh_engine
+namespace object {
+	class InterfaceObject {
+	public:
+		InterfaceObject(const LoaderParams* params) {}
+		virtual ~InterfaceObject() {}
+
+		virtual void Update() = 0;
+	};
+} // namespace object
 
 #endif // GDH_ENGINE_INTERFACE_OBJECT_H
