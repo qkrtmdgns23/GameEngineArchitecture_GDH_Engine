@@ -1,16 +1,14 @@
-// library
 #include "include/GL/glew.h"	
-
-// custom header
 #include "mesh.h"
 #include "file_manager.h"
 
-namespace gdh_engine {
-	namespace object {
+namespace object {
+	namespace component {
 		Mesh::Mesh(std::string obj_path)
 		{
-			unsigned int *get_num_of_vertices = &num_of_vertices_;
-			manager::file::FileManager::get_instance()->Load3DModelFromObj(obj_path, vertices_, uvs_,normals_, get_num_of_vertices);
+			unsigned int* get_num_of_vertices = &num_of_vertices_;
+			system_2::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
+			vertices_, uvs_, normals_, get_num_of_vertices);
 			is_vertex_array_object_invoke_ = false;
 			this->vertex_array_ = new VertexInformation[this->num_of_vertices_];
 			for (size_t i = 0; i < num_of_vertices_; ++i)
@@ -24,7 +22,8 @@ namespace gdh_engine {
 		Mesh::Mesh(const char* obj_path)
 		{
 			unsigned int* get_num_of_vertices = &num_of_vertices_;
-			manager::file::FileManager::get_instance()->Load3DModelFromObj(obj_path, vertices_, uvs_, normals_, get_num_of_vertices);
+			system_2::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
+			vertices_, uvs_, normals_, get_num_of_vertices);
 			is_vertex_array_object_invoke_ = false;
 			this->vertex_array_ = new VertexInformation[this->num_of_vertices_];
 			for (size_t i = 0; i < num_of_vertices_; ++i)
@@ -34,6 +33,10 @@ namespace gdh_engine {
 				vertex_array_[i].texture_coordinate = uvs_[i];
 			}
 			SetActive();
+		}
+		Mesh::Mesh(const Mesh& other)
+		{
+
 		}
 		Mesh::~Mesh()
 		{
@@ -76,26 +79,5 @@ namespace gdh_engine {
 				fprintf(stdout, "You should invoke GenerateAndBindVertexArrayObject function first.\n");
 			}
 		}
-
-		void Mesh::UnbindVertexBufferObject()
-		{
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-		}
-
-		void Mesh::UnbindVertexArrayObject()
-		{
-			glBindVertexArray(0);
-		}
-
-		void Mesh::SetActive()
-		{
-			is_mesh_active_ = true;
-		}
-
-		void Mesh::SetUnActive()
-		{
-			is_mesh_active_ = false;
-		}
-
-	} // namespace object
-} // namespace gdh_engine
+	}	// namespace component
+} // namespace object
