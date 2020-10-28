@@ -47,12 +47,18 @@ namespace system_2 {
 	#pragma region WINDOW_DATA
 		unsigned int window_width_;
 		unsigned int window_height_;
+		int frame_buffer_width_;
+		int frame_buffer_height_;
 		unsigned int opengl_major_version_;
 		unsigned int opengl_minor_version_;
 		std::string window_title_;
 		GLFWwindow* opengl_window_;
 	#pragma endregion
 		glm::mat4	projection_matrix_;
+		float fov_;
+		float near_plane_;
+		float far_plane_;
+
 		glm::mat4	view_matrix_;
 	};
 	void Renderer::ClearWindow() const

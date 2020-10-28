@@ -1,6 +1,7 @@
 #include "renderer.h"
 #include "error_manager.h"
 #include "camera.h"
+#include "game.h"
 
 namespace system_2 {
 	Renderer* Renderer::instance_ = nullptr;
@@ -11,7 +12,10 @@ namespace system_2 {
 		: window_title_(window_title), opengl_major_version_(gl_major_version)
 		, opengl_minor_version_(gl_minor_version) 
 		, window_width_(window_width), window_height_(window_height)
-		,projection_matrix_(glm::mat4(0.f))
+		, frame_buffer_width_(static_cast<int>(window_width))
+		, frame_buffer_height_(static_cast<int>(window_height))
+		,projection_matrix_(glm::mat4(0.f)), fov_(0.f), near_plane_(0.1f)
+		, far_plane_(1000.f)
 		, view_matrix_(glm::mat4(0.f))
 	{
 		if (!glfwInit())
@@ -31,6 +35,10 @@ namespace system_2 {
 			fprintf(stderr, "Error Occured: %d", ErrorType::kWindowInitFailed);
 			glfwTerminate();
 		}
+		glfwGetFramebufferSize(opengl_window_,
+			&frame_buffer_width_, &frame_buffer_height_);
+		glfwSetFramebufferSizeCallback(opengl_window_,
+			Game::get_instance()->ResizeFramebuffer);
 		glfwMakeContextCurrent(opengl_window_);
 		glewExperimental = true;
 		if (glewInit() != GLEW_OK) {
@@ -38,6 +46,7 @@ namespace system_2 {
 			glfwTerminate();
 		}
 		glEnable(GL_DEPTH_TEST);
+		glfwSetInputMode(opengl_window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 	Renderer::Renderer(const char* window_title
 		, unsigned int gl_major_version, unsigned int gl_minor_version
@@ -45,8 +54,11 @@ namespace system_2 {
 		: opengl_major_version_(gl_major_version)
 		, opengl_minor_version_(gl_minor_version)
 		, window_width_(window_width), window_height_(window_height)
+		, frame_buffer_width_(static_cast<int>(window_width))
+		, frame_buffer_height_(static_cast<int>(window_height))
 		, projection_matrix_(glm::mat4(0.f))
-		, view_matrix_(glm::mat4(0.f))
+		, view_matrix_(glm::mat4(0.f)), fov_(0.f), near_plane_(0.1f)
+		, far_plane_(1000.f)
 	{
 		window_title_ = window_title;
 		opengl_window_ = NULL;
@@ -69,6 +81,10 @@ namespace system_2 {
 			fprintf(stderr, "Error Occured: %d", ErrorType::kWindowInitFailed);
 			glfwTerminate();
 		}
+		glfwGetFramebufferSize(opengl_window_,
+			&frame_buffer_width_, &frame_buffer_height_);
+		glfwSetFramebufferSizeCallback(opengl_window_,
+			Game::get_instance()->ResizeFramebuffer);
 		glfwMakeContextCurrent(opengl_window_);
 		glewExperimental = true;
 		if (glewInit() != GLEW_OK) {
@@ -76,6 +92,7 @@ namespace system_2 {
 			glfwTerminate();
 		}
 		glEnable(GL_DEPTH_TEST);
+		glfwSetInputMode(opengl_window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 
 	void Renderer::ConvertCoordinatesBasedOnCamera
@@ -83,9 +100,12 @@ namespace system_2 {
 	{
 		projection_matrix_ = glm::perspective
 			(glm::radians(object::Camera::get_instance()->get_zoom()),
-			(float)1024 / 728, 0.1f, 100.0f);
+			static_cast<float>(frame_buffer_width_) / 
+			static_cast<float>(frame_buffer_height_), 
+			near_plane_, far_plane_);
 		view_matrix_ = object::Camera::get_instance()
 			->get_view_matrix();
+
 		target_object->SendProjectionAndViewMatrixToShader
 			(projection_matrix_, view_matrix_);
 	}

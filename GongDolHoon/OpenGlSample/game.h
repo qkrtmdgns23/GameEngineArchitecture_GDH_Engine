@@ -42,8 +42,14 @@ namespace system_2 {
 		void Render() const;
 		inline void Exit();
 	#pragma endregion
+
+	// Callback Functions
+	static void ResizeFramebuffer(GLFWwindow* window, int width, int height);
 	private: 
 		bool running_;
+		float delta_time_;
+		float current_frame_;
+		float last_frame_;
 	};
 
 	bool Game::SystemRunning() const
