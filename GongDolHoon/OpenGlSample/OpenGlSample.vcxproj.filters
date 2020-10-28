@@ -789,9 +789,6 @@
     <ClInclude Include="camera.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="interface_object.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -808,6 +805,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="error_manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="loader_params.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="interface_game_state.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="play_state.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1228,9 +1234,6 @@
     <ClCompile Include="file_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="mesh.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -1243,9 +1246,6 @@
     <ClCompile Include="camera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="sphere.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="invisible_object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -1253,6 +1253,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="play_state.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

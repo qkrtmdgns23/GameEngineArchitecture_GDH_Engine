@@ -49,15 +49,15 @@ namespace object {
 
 		void Transform::Move(const glm::vec3 position)
 		{
-			this->obj_position_ += position;
+			this->obj_position_ = position;
 		}
 		void Transform::Rotate(const glm::vec3 rotation)
 		{
-			this->obj_rotation_ += rotation;
+			this->obj_rotation_ = rotation;
 		}
 		void Transform::Resize(const glm::vec3 scale)
 		{
-			this->obj_scale_ += scale;
+			this->obj_scale_ = scale;
 		}
 		void Transform::SetActive()
 		{
