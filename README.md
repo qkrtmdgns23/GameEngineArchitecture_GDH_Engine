@@ -1,6 +1,7 @@
 # GDH_Engine  
- 단순히 **OpenGL로 출력된 화면을 보는것을 좋아하고, 게임엔진의 구조에 대해 흥미있는 사람**이 만든 저장소입니다. ㅇ_ㅇ 
- **프로그래머 인생 종 칠때가지 계속 commit할 예정입니다.** :)
+ 단순히 **OpenGL로 출력된 화면을 보는것을 좋아하고, 게임엔진의 구조에 대해 흥미있는 사람**이 만든 저장소입니다. 
+ **프로그래머 인생 종 칠때가지 계속 commit할 예정입니다.** :)  
+ [GDH_ENGINE_WIKI_HOME](https://github.com/qkrtmdgns23/GameEngineArchitecture_GDH_Engine/wiki)
  
 ## 이 저장소의 존재 목적이 무엇인가요?
 1. 대학교에서 제가  **공부하는 혹은 공부했던 내용들을 직접 응용**할 것입니다. 
@@ -22,10 +23,6 @@
 ### 영어공부를 위한 나의 희생양과 결과물
 **희생양**: [*Google Cpp Style Guide*](https://google.github.io/styleguide/cppguide.html)  
 **결과물**: 
-
-### Study Git and Github
-
-### 엔진을 만들기 위해 공부한 내용들
 
 ## 왜 main branch에 commit이 안되어 있나요?
 * 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, 타 branch들을 main branch에 merge하겠습니다.
