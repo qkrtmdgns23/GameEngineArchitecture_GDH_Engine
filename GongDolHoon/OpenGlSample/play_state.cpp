@@ -1,5 +1,4 @@
 #include "play_state.h"
-#include "input_manager.h"
 #include "renderer.h"
 #include "interface_object.h"
 #include "visible_object.h"

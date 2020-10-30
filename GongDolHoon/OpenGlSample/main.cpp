@@ -1,7 +1,6 @@
 #include <cstdio>
 
 #include "game.h"
-#include "error_manager.h"
 
 using namespace system_2;
 
