@@ -25,7 +25,6 @@ namespace object {
 			}
 			return instance_;
 		}
-
 		~Camera() {}
 
 	private:
@@ -36,6 +35,7 @@ namespace object {
 			float up_x, float up_y, float up_z, float yaw,
 			float pitch);
 		static Camera* instance_;
+
 #pragma endregion
 	public:
 #pragma region GETTER_AND_SETTER_DECLARED
@@ -69,6 +69,7 @@ namespace object {
 		float movement_speed_;
 		float rotate_sensitivity_;
 	};
+
 #pragma region GETTER_AND_SETTER_DEFINED
 	glm::mat4 Camera::get_view_matrix()
 	{
