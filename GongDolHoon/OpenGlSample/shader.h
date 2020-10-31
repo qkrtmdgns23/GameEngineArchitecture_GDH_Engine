@@ -13,12 +13,12 @@ namespace object {
 	#pragma region CONSTRUCTOR_DESTREUCTOR
 		Shader(const char* vertex_path, const char* fragment_path)
 		{
-			shader_program_identity_ = system_2::FileManager::get_instance()->
+			shader_program_identity_ = gdh_system::FileManager::get_instance()->
 				LoadAndCreateShader(vertex_path, fragment_path);
 		}
 		Shader(std::string vertex_path, std::string fragment_path)
 		{
-			shader_program_identity_ = system_2::FileManager::get_instance()->
+			shader_program_identity_ = gdh_system::FileManager::get_instance()->
 				LoadAndCreateShader(vertex_path, fragment_path);
 		}
 		Shader(const Shader& other) 

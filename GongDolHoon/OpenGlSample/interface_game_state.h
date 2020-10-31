@@ -4,7 +4,7 @@
 #include <vector>
 #include "interface_object.h"
 
-namespace system_2 {
+namespace gdh_system {
 	class InterfaceGameState
 	{
 	protected:
@@ -18,6 +18,6 @@ namespace system_2 {
 
 		virtual std::string get_state_identity() const = 0;
 	};
-} // namespace system_2
+} // namespace gdh_system
 
 #endif // GDH_ENGINE_GAMESTATE_H

@@ -6,7 +6,7 @@ namespace object {
 		Mesh::Mesh(std::string obj_path)
 		{
 			unsigned int* get_num_of_vertices = &num_of_vertices_;
-			system_2::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
+			gdh_system::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
 			vertices_, uvs_, normals_, get_num_of_vertices);
 			is_vertex_array_object_invoke_ = false;
 			this->vertex_array_ = new VertexInformation[this->num_of_vertices_];
@@ -21,7 +21,7 @@ namespace object {
 		Mesh::Mesh(const char* obj_path)
 		{
 			unsigned int* get_num_of_vertices = &num_of_vertices_;
-			system_2::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
+			gdh_system::FileManager::get_instance()->Load3DModelFromObj(obj_path, 
 			vertices_, uvs_, normals_, get_num_of_vertices);
 			is_vertex_array_object_invoke_ = false;
 			this->vertex_array_ = new VertexInformation[this->num_of_vertices_];
@@ -32,10 +32,6 @@ namespace object {
 				vertex_array_[i].texture_coordinate = uvs_[i];
 			}
 			SetActive();
-		}
-		Mesh::Mesh(const Mesh& other)
-		{
-
 		}
 		Mesh::~Mesh()
 		{

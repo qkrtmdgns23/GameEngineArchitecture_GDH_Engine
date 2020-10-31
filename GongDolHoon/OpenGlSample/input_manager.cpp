@@ -1,7 +1,7 @@
 #include "input_manager.h"
 #include "camera.h"
 
-namespace system_2
+namespace gdh_system
 {
 	InputManager* InputManager::instance_ = nullptr;
 

@@ -3,7 +3,7 @@
 #include "camera.h"
 #include "game.h"
 
-namespace system_2 {
+namespace gdh_system {
 	Renderer* Renderer::instance_ = nullptr;
 
 	Renderer::Renderer(std::string window_title
@@ -109,4 +109,4 @@ namespace system_2 {
 		target_object->SendProjectionAndViewMatrixToShader
 			(projection_matrix_, view_matrix_);
 	}
-}	// namespace system_2
+}	// namespace gdh_system

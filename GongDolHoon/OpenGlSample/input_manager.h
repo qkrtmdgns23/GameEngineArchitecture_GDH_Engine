@@ -3,7 +3,7 @@
 
 #include "include/GLFW/glfw3.h" 
 
-namespace system_2 {
+namespace gdh_system {
 	// InputManager class was written as singleton pattern.
 	class InputManager
 	{
@@ -43,5 +43,5 @@ namespace system_2 {
 		double mouse_offset_y_;
 		bool is_cursor_pos_ready_to_initialize_;
 	};
-} // namespace system_2
+} // namespace gdh_system
 #endif // GDH_ENGINE_INPUT_MANAGER_H

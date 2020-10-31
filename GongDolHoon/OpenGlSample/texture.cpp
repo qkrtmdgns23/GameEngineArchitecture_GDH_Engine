@@ -31,13 +31,13 @@ namespace object {
 
 			if (type_of_texture == TextureDimensionalType::k2D)
 			{
-				system_2::FileManager::get_instance()->LoadTexture2D
+				gdh_system::FileManager::get_instance()->LoadTexture2D
 				(texture_path, this->texture_width_, this->texture_height_,
 				this->texture_nr_channels_, alpha_data_type);
 			}
 			else if (type_of_texture == TextureDimensionalType::k3D)
 			{
-				system_2::FileManager::get_instance()->LoadTexture2D
+				gdh_system::FileManager::get_instance()->LoadTexture2D
 				(texture_path, this->texture_width_, this->texture_height_, 
 				this->texture_nr_channels_, alpha_data_type);
 			}
@@ -74,13 +74,13 @@ namespace object {
 
 			if (type_of_texture == TextureDimensionalType::k2D)
 			{
-				system_2::FileManager::get_instance()->LoadTexture2D
+				gdh_system::FileManager::get_instance()->LoadTexture2D
 				(texture_path, this->texture_width_, this->texture_height_,
 					this->texture_nr_channels_, alpha_data_type);
 			}
 			else if (type_of_texture == TextureDimensionalType::k3D)
 			{
-				system_2::FileManager::get_instance()->LoadTexture2D
+				gdh_system::FileManager::get_instance()->LoadTexture2D
 				(texture_path, this->texture_width_, this->texture_height_,
 					this->texture_nr_channels_, alpha_data_type);
 			}

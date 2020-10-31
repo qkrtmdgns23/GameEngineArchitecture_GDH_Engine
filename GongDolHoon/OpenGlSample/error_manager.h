@@ -1,7 +1,7 @@
 #ifndef GDH_ENGINE_ERROR_MANAGER
 #define GDH_ENGINE_ERROR_MANAGER
 
-namespace system_2 {
+namespace gdh_system {
 	enum class ErrorType
 	{
 		kGameInitFailed = 1,

@@ -6,7 +6,7 @@
 #include "visible_object.h"
 
 #include <string>
-namespace system_2 {
+namespace gdh_system {
 	class Renderer {
 	#pragma region SINGLETON_PATTERN
 	public:
@@ -88,6 +88,6 @@ namespace system_2 {
 	{
 		return opengl_window_;
 	}
-} // namespace system_2
+} // namespace gdh_system
 
 #endif // GDH_ENGINE_RENDERER_H

@@ -7,7 +7,7 @@
 #include "camera.h"
 #include "interface_game_state.h"
 
-namespace system_2 {
+namespace gdh_system {
 	class PlayState : public InterfaceGameState
 	{
 	public:
@@ -44,5 +44,5 @@ namespace system_2 {
 	{
 		return state_id_;
 	}
-}	// namespace system_2
+}	// namespace gdh_system
 #endif // GDH_ENGINE_PLAY_STATE_H

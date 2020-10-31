@@ -1,7 +1,7 @@
 #include "game.h"
 #include "input_manager.h"
 
-namespace system_2 {
+namespace gdh_system {
 	Game* Game::instance_ = nullptr;
 
 	Game::Game()
@@ -22,7 +22,7 @@ namespace system_2 {
 	void Game::Update()
 	{	
 		#pragma region GET_TIME_PER_FRAMES
-		current_frame_ = glfwGetTime();
+		current_frame_ = static_cast<float>(glfwGetTime());
 		delta_time_ = current_frame_ - last_frame_;
 		last_frame_ = current_frame_;
 		#pragma endregion
@@ -39,4 +39,4 @@ namespace system_2 {
 	{
 		glViewport(0, 0, width, height);
 	}
-}	// namespace system_2
+}	// namespace gdh_system

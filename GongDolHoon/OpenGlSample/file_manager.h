@@ -5,7 +5,7 @@
 
 #include "loader_params.h"
 
-namespace system_2 {
+namespace gdh_system {
 	class FileManager
 	{
 	#pragma region SINGLETON_PATTERN
@@ -40,5 +40,5 @@ namespace system_2 {
 		void LoadTexture2D(std::string texture_path, int texture_width, int texture_height, 
 		int texture_nr_channels, object::TextureAlphaType alpha_data_type);
 	};
-} // namespace system_2
+} // namespace gdh_system
 #endif // GDH_ENGINE_FILE_MANAGER

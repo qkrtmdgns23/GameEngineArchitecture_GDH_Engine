@@ -5,7 +5,7 @@
 #include "visible_object.h"
 #include <cstdio>
 
-namespace system_2 {
+namespace gdh_system {
 	const std::string PlayState::state_id_ = "PLAY";
 	PlayState* PlayState::instance_ = NULL;
 
@@ -50,4 +50,4 @@ namespace system_2 {
 		return true;
 	}
 	
-}	// namespace system_2
+}	// namespace gdh_system

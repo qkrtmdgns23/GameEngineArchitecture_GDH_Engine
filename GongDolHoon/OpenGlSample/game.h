@@ -13,7 +13,7 @@
 #pragma comment(lib, "lib-vc2017/glew32.lib")
 #pragma comment(lib, "lib-vc2017/glfw3.lib")
 
-namespace system_2 {
+namespace gdh_system {
 	class Game
 	{
 	#pragma region SINGLETON_PATTERN
@@ -68,5 +68,5 @@ namespace system_2 {
 		running_ = false;
 	}
 
-}	// namespace system_2
+}	// namespace gdh_system
 #endif // GDH_ENGINE_GAME_H
