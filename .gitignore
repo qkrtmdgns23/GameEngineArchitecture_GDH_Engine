@@ -52,6 +52,7 @@ artifacts/
 *.pch
 *.pdb
 *.pgc
+*.gif
 *.pgd
 *.rsp
 *.sbr
