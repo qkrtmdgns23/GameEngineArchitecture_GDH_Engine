@@ -2,13 +2,11 @@
 #include <fstream>
 #include <sstream>
 
-// library
 #include "include/GL/glew.h"		
 #include "include/GLFW/glfw3.h" 
 #define STB_IMAGE_IMPLEMENTATION
 #include "include/stb/stb_image.h"
 
-// custom header
 #include "file_manager.h"
 
 namespace system_2 {

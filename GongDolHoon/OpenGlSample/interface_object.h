@@ -10,6 +10,8 @@ namespace object {
 		virtual ~InterfaceObject() {}
 
 		virtual void Update() = 0;
+		virtual void Render() const = 0;
+		virtual void Clean() = 0;
 	};
 } // namespace object
 
