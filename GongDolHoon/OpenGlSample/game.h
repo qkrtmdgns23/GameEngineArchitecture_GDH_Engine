@@ -39,7 +39,7 @@ namespace gdh_system {
 		inline bool SystemRunning() const;
 		void HandleEvents() const;
 		void Update();
-		void Render() const;
+		void Render();
 		inline void Exit();
 	#pragma endregion
 
@@ -47,9 +47,6 @@ namespace gdh_system {
 	static void ResizeFramebuffer(GLFWwindow* window, int width, int height);
 	private: 
 		bool running_;
-		float delta_time_;
-		float current_frame_;
-		float last_frame_;
 	};
 
 	bool Game::SystemRunning() const
@@ -60,7 +57,6 @@ namespace gdh_system {
 		}
 		return false;	
 	}
-
 	void Game::Exit()
 	{
 		PlayState::get_instance()->OnExit();

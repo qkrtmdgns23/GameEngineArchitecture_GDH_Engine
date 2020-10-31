@@ -1,12 +1,12 @@
 #include "game.h"
 #include "input_manager.h"
+#include "time.h"
 
 namespace gdh_system {
 	Game* Game::instance_ = nullptr;
 
 	Game::Game()
-	: running_(true), delta_time_(0.f),
-	current_frame_(0.f), last_frame_(0.f)
+	: running_(true)
 	{
 		Renderer::get_instance();
 		PlayState::get_instance()->OnEnter();
@@ -17,22 +17,24 @@ namespace gdh_system {
 	void Game::HandleEvents() const
 	{
 		InputManager::get_instance()-> Update
-			(Renderer::get_instance()-> get_opengl_window(), delta_time_);
+			(Renderer::get_instance()-> get_opengl_window()
+			, static_cast<float>(Time::get_instance()->get_delta_time()));
 	}
 	void Game::Update()
 	{	
-		#pragma region GET_TIME_PER_FRAMES
-		current_frame_ = static_cast<float>(glfwGetTime());
-		delta_time_ = current_frame_ - last_frame_;
-		last_frame_ = current_frame_;
-		#pragma endregion
-		PlayState::get_instance()->Update();
+		if (Time::get_instance()->IsLogicUpdatePossible() == true)
+		{
+			PlayState::get_instance()->Update();
+		}
 	}
-	void Game::Render() const
+	void Game::Render()
 	{
-		Renderer::get_instance()->ClearWindow();
-		PlayState::get_instance()->Render();
-		Renderer::get_instance()->SwapBuffer();
+		if (Time::get_instance()->IsRenderUpdatePossible() == true)
+		{
+			Renderer::get_instance()->ClearWindow();
+			PlayState::get_instance()->Render();
+			Renderer::get_instance()->SwapBuffer();
+		}		
 	}
 
 	void Game::ResizeFramebuffer(GLFWwindow* window, int width, int height)

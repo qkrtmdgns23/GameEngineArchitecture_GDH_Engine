@@ -8,7 +8,7 @@ namespace object {
 
 	Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch)
 		:front_(glm::vec3(0.f, 0.f, 0.f)), zoom_(45.f), movement_speed_(30.f)
-		, rotate_sensitivity_(2.0f)
+		, rotate_sensitivity_(0.000002f)
 	{
 		this->position_ = position;
 		this->up_ = up;
@@ -19,7 +19,7 @@ namespace object {
 	}
 	Camera::Camera(float pos_x, float pos_y, float pos_z, float up_x, float up_y,
 		float up_z, float yaw, float pitch) :front_(glm::vec3(0.f, 0.f, 0.f)),
-		 zoom_(45.f), movement_speed_(30.f), rotate_sensitivity_(2.0f)
+		 zoom_(45.f), movement_speed_(30.f), rotate_sensitivity_(0.000002f)
 	{
 		this->position_ = glm::vec3(pos_x, pos_y, pos_z);
 		this->up_ = glm::vec3(up_x, up_y, up_z);
