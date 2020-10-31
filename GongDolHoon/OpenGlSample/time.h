@@ -4,17 +4,15 @@
 // include glfw to prevent redefinition error.
 // https://stackoverflow.com/questions/3927810/how-to-prevent-macro-redefinition
 #include "include/GLFW/glfw3.h" 
-#include <cassert>
 
 namespace gdh_system {
 	namespace frame {
 		enum class DefinedFrame {
 			kRender = 60,
 			kLogic = 120,
-			kNumOfFrame = 2,
 		};
 
-		struct Frame{
+		struct Frame {
 			long long time_distance;
 			long long per_frame;
 			LARGE_INTEGER current_frame_counter;

@@ -29,7 +29,7 @@ namespace gdh_system {
 	}
 	void Game::Render()
 	{
-		if (Time::get_instance()->IsRenderUpdatePossible() == true)
+		/*if (Time::get_instance()->IsRenderUpdatePossible() == true)*/
 		{
 			Renderer::get_instance()->ClearWindow();
 			PlayState::get_instance()->Render();
