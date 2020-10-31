@@ -4,17 +4,15 @@
 // include glfw to prevent redefinition error.
 // https://stackoverflow.com/questions/3927810/how-to-prevent-macro-redefinition
 #include "include/GLFW/glfw3.h" 
-#include <cassert>
 
 namespace gdh_system {
 	namespace frame {
 		enum class DefinedFrame {
 			kRender = 60,
-			kLogic = 120,
-			kNumOfFrame = 2,
+			kLogic = 120,			
 		};
 
-		struct Frame{
+		struct Frame {
 			long long time_distance;
 			long long per_frame;
 			LARGE_INTEGER current_frame_counter;
@@ -26,7 +24,7 @@ namespace gdh_system {
 
 	class Time
 	{
-	#pragma region SINGLETON_PATTERN
+#pragma region SINGLETON_PATTERN
 	public:
 		~Time() {}
 		static Time* get_instance() {
@@ -40,7 +38,7 @@ namespace gdh_system {
 	private:
 		Time();
 		static Time* instance_;
-	#pragma endregion
+#pragma endregion
 	public:
 		inline bool IsRenderUpdatePossible();
 		inline bool IsLogicUpdatePossible();
@@ -61,7 +59,7 @@ namespace gdh_system {
 	{
 		return delta_time_;
 	}
-	
+
 	bool Time::IsRenderUpdatePossible()
 	{
 		return IsFrameUpdate(render_);

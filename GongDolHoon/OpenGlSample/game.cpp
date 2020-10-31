@@ -6,7 +6,7 @@ namespace gdh_system {
 	Game* Game::instance_ = nullptr;
 
 	Game::Game()
-	: running_(true)
+		: running_(true)
 	{
 		Renderer::get_instance();
 		PlayState::get_instance()->OnEnter();
@@ -16,12 +16,12 @@ namespace gdh_system {
 
 	void Game::HandleEvents() const
 	{
-		InputManager::get_instance()-> Update
-			(Renderer::get_instance()-> get_opengl_window()
+		InputManager::get_instance()->Update
+		(Renderer::get_instance()->get_opengl_window()
 			, static_cast<float>(Time::get_instance()->get_delta_time()));
 	}
 	void Game::Update()
-	{	
+	{
 		if (Time::get_instance()->IsLogicUpdatePossible() == true)
 		{
 			PlayState::get_instance()->Update();
@@ -34,7 +34,7 @@ namespace gdh_system {
 			Renderer::get_instance()->ClearWindow();
 			PlayState::get_instance()->Render();
 			Renderer::get_instance()->SwapBuffer();
-		}		
+		}
 	}
 
 	void Game::ResizeFramebuffer(GLFWwindow* window, int width, int height)

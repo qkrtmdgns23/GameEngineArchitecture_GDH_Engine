@@ -1,8 +1,6 @@
-#include <cstdio>
-
 #include "game.h"
 
-using namespace system_2;
+using namespace gdh_system;
 
 int main(void)
 {

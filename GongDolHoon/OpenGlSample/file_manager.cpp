@@ -9,7 +9,7 @@
 
 #include "file_manager.h"
 
-namespace system_2 {
+namespace gdh_system {
 	FileManager* FileManager::instance_ = nullptr;
 
 	GLuint FileManager::LoadAndCreateShader(const char* vertex_path, const char* fragment_path)
@@ -416,4 +416,4 @@ namespace system_2 {
 		stbi_image_free(data);
 	}
 
-}	// namespace system_2
+}	// namespace gdh_system
