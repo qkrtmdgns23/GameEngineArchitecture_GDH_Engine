@@ -25,5 +25,11 @@
 **결과물**: 
 
 ## 왜 main branch에 commit이 안되어 있나요?
-* 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, 타 branch들을 main branch에 merge하겠습니다.
-* Release Branch Code: [Release Branch로 이동하기](https://github.com/qkrtmdgns23/GameEngineArchitecture_GDH_Engine/tree/release_midterm_test)
+* 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, main branch에 commit을 진행할 예정입니다.
+
+## 만들려는 게임 목록
+1. *[**Joniverse**](https://www.youtube.com/watch?v=CEaQ5b1lAVE) with GDH_ENGINE* - 2020년 3D게임엔진 과목 기말작품 제출 예정  
+![Joniverse](https://user-images.githubusercontent.com/54134912/97792397-0e0a8100-1c21-11eb-8a28-3e1f3cdc74aa.gif)  
+　  
+2. *[**Doki Doki Hoseo University**](https://www.youtube.com/watch?v=d7KSJvj_gL4)* with GDH_ENGINE - 2021년 게임학과 겨울 졸업작품 제출 예정 ~두근두근 컴정부(2018)의 2번째 이야기~
+![TargetGame_2](https://user-images.githubusercontent.com/54134912/97792494-52e2e780-1c22-11eb-94d4-74bc9a0481f7.gif)
