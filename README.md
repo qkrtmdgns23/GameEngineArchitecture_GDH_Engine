@@ -17,12 +17,8 @@
 |1|**Game Framework**             |박창훈 교수님            |2019.09~2019.12|
 |2|**3D Game Graphics**           |김재범 교수님            |2020.03~2020.06|
 |3|**3D Game Architecture**       |김재범 교수님            |2020.09~2020.12|
-|4|**C Unmanagement Programming** |Pope Kim            |2020.09~2020.10|
-|5|**Cpp Unmanagement Programming**|Pope Kim           |2020.10~|
-
-### 영어공부를 위한 나의 희생양과 결과물
-**희생양**: [*Google Cpp Style Guide*](https://google.github.io/styleguide/cppguide.html)  
-**결과물**: 
+|4|**C Unmanaged Programming** |Pope Kim            |2020.09~2020.10|
+|5|**Cpp Unmanaged Programming**|Pope Kim           |2020.10~|
 
 ## 왜 main branch에 commit이 안되어 있나요?
 * 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, main branch에 commit을 진행할 예정입니다.
