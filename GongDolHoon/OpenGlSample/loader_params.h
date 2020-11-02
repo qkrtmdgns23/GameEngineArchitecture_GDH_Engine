@@ -100,19 +100,43 @@ namespace object {
 	}
 
 	namespace primitive {
-		class SphereParams : public LoaderParams
+		class SphereParams final: public LoaderParams
 		{
 		public:
 			SphereParams()
 				: LoaderParams("resource/shaders/sphere_vs.glsl",
-					"resource/shaders/sphere_fs.glsl", 
-					"resource/jpg/container.jpg", 
-					"resource/obj/sphere.obj", 
-					object::TextureDimensionalType::k2D,
-					object::TextureAlphaType::kRGB)
+				"resource/shaders/sphere_fs.glsl", 
+				"resource/jpg/primitive_texture.jpg", 
+				"resource/obj/sphere.obj", 
+				object::TextureDimensionalType::k2D,
+				object::TextureAlphaType::kRGB)
 			{}
-		private:
+		};
 
+		class CubeParams final: public LoaderParams
+		{
+		public:
+			CubeParams()
+				: LoaderParams("resource/shaders/cube_vs.glsl",
+				"resource/shaders/cube_fs.glsl",
+				"resource/jpg/primitive_texture.jpg",
+				"resource/obj/cube.obj",
+				object::TextureDimensionalType::k2D,
+				object::TextureAlphaType::kRGB)
+			{}
+		};
+
+		class CapsuleParams final : public LoaderParams
+		{
+		public:
+			CapsuleParams()
+				: LoaderParams("resource/shaders/capsule_vs.glsl",
+				"resource/shaders/capsule_fs.glsl",
+				"resource/jpg/primitive_texture.jpg",
+				"resource/obj/capsule.obj",
+				object::TextureDimensionalType::k2D,
+				object::TextureAlphaType::kRGB)
+			{}
 		};
 	}	// namespace primitive
 } // namespace object
