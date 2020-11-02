@@ -249,7 +249,7 @@ namespace gdh_system {
 
 		}
 
-		*num_of_vertices = vertex_indices.size();
+		*num_of_vertices = static_cast<unsigned int>(vertex_indices.size());
 
 		// For each vertex of each triangle
 		for (unsigned int i = 0; i < vertex_indices.size(); i++) {
@@ -344,7 +344,7 @@ namespace gdh_system {
 
 		}
 
-		*num_of_vertices = vertex_indices.size();
+		*num_of_vertices = static_cast<unsigned int>(vertex_indices.size());
 
 		// For each vertex of each triangle
 		for (unsigned int i = 0; i < vertex_indices.size(); i++) {
