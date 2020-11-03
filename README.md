@@ -21,7 +21,7 @@
 |5|**Cpp Unmanaged Programming**|Pope Kim           |2020.10~|
 
 ## 왜 main branch에 commit이 안되어 있나요?
-* 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, main branch에 commit을 진행할 예정입니다.
+* 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, main branch에 commit을 진행할 예정입니다. [develop_seunghoon](https://github.com/qkrtmdgns23/GameEngineArchitecture_GDH_Engine/tree/develop_seunghoon)에 코드 계속 커밋하고 있으니 코드 구경하고 싶으면 절로 가시면 돼요!
 
 ## 만들려는 게임 목록
 1. *[**Joniverse**](https://www.youtube.com/watch?v=CEaQ5b1lAVE) with GDH_ENGINE* - 2020년 3D게임엔진 과목 기말작품 제출 예정  
