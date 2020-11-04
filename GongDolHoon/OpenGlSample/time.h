@@ -26,7 +26,8 @@ namespace gdh_system {
 	{
 #pragma region SINGLETON_PATTERN
 	public:
-		~Time() {}
+		Time(const Time& other) = delete;
+		~Time() = default;
 		static Time* get_instance() {
 			if (instance_ == nullptr)
 			{

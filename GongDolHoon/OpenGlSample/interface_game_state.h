@@ -7,6 +7,10 @@
 namespace gdh_system {
 	class InterfaceGameState
 	{
+	public:
+		InterfaceGameState() = default;
+		InterfaceGameState(const InterfaceGameState& other) = delete;
+		virtual ~InterfaceGameState() = default;
 	protected:
 		std::vector <object::InterfaceObject*> game_objects_;
 

@@ -53,6 +53,8 @@ namespace object {
 			, texture_path_(texture_path), obj_path_(obj_path)
 			, trans_inform_(trans_inform), is_3D_(is_texture_3d)
 			, is_alpha_(is_texture_alpha) {}
+		LoaderParams(const LoaderParams& other) = delete;
+		virtual ~LoaderParams() = default;
 
 		inline std::string get_vertex_path() const;
 		inline std::string get_fragment_path() const;
@@ -111,6 +113,8 @@ namespace object {
 				object::TextureDimensionalType::k2D,
 				object::TextureAlphaType::kRGB)
 			{}
+
+			virtual ~SphereParams() = default;
 		};
 
 		class CubeParams final: public LoaderParams
@@ -124,6 +128,8 @@ namespace object {
 				object::TextureDimensionalType::k2D,
 				object::TextureAlphaType::kRGB)
 			{}
+
+			virtual ~CubeParams() = default;
 		};
 
 		class CapsuleParams final : public LoaderParams
@@ -137,6 +143,8 @@ namespace object {
 				object::TextureDimensionalType::k2D,
 				object::TextureAlphaType::kRGB)
 			{}
+			
+			virtual ~CapsuleParams() = default;
 		};
 	}	// namespace primitive
 } // namespace object

@@ -25,7 +25,8 @@ namespace object {
 			}
 			return instance_;
 		}
-		~Camera() {}
+		Camera(const Camera& other) = delete;
+		~Camera() = default;
 
 	private:
 		Camera(glm::vec3 position = glm::vec3(0.f),

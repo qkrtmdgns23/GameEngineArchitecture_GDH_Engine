@@ -17,17 +17,15 @@ namespace gdh_system {
 			}
 			return instance_;
 		}
-		~InputManager() {}
+		InputManager(const InputManager& other) = delete;
+		~InputManager() = default;
 	private:
 		InputManager(): current_mouse_x_pos_(0.f), current_mouse_y_pos_(0.f)
 			, last_mouse_x_pos_(0.f), last_mouse_y_pos_(0.f)
 			, mouse_offset_x_(0.f), mouse_offset_y_(0.f),
 			is_cursor_pos_ready_to_initialize_(true)
 		{}
-		// it's almost same with
-		// InputManager(const InputManager& other) = delete; on public
-		InputManager(const InputManager& other);
-		
+	
 		static InputManager* instance_;
 	#pragma endregion
 	public:

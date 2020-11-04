@@ -6,11 +6,6 @@ namespace object {
 	{
 	}
 
-	InvisibleObject:: ~InvisibleObject()
-	{
-
-	}
-
 	void InvisibleObject::Update()
 	{
 

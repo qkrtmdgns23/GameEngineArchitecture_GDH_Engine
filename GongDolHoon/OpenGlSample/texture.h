@@ -17,7 +17,8 @@ namespace object {
 				TextureAlphaType alpha_data_type);
 			Texture(const char* texture_path, TextureDimensionalType type_of_texture,
 				TextureAlphaType alpha_data_type);
-			~Texture() {}
+			Texture(const Texture& other) = delete;
+			~Texture() = default;
 		#pragma endregion
 			inline virtual void SetActive() final;
 			inline virtual void SetUnActive() final;

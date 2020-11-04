@@ -21,7 +21,7 @@ namespace gdh_system {
 		assert(game_objects_[0] != NULL);
 		Renderer::get_instance()->
 			ConvertCoordinatesBasedOnCamera(
-				reinterpret_cast<object::VisibleObject*>
+				static_cast<object::VisibleObject*>
 				(game_objects_[0]));
 		for (size_t i = 0; i < game_objects_.size(); ++i)
 		{
@@ -33,7 +33,7 @@ namespace gdh_system {
 		fprintf(stdout, "Enter On PlayState\n");
 		object::InterfaceObject* sphere 
 			= new object::VisibleObject(new
-				object::primitive::SphereParams);
+				object::primitive::CapsuleParams);
 		assert(sphere != NULL);
 		game_objects_.push_back(sphere);
 		return true;

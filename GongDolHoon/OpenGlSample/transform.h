@@ -16,7 +16,7 @@ namespace object {
 			Transform(TransInform transform_inform = 
 				{ glm::vec3(0.f), glm::vec3(0.f), glm::vec3(1.f) });
 			Transform(const Transform& other);
-			~Transform();
+			~Transform() = default;
 			#pragma endregion
 
 			#pragma region TRANSFORM_GETTER_SETTER

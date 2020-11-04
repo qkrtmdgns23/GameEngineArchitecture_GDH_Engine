@@ -18,6 +18,7 @@ namespace object {
 		#pragma region CONSTRUCTOR_DESTRUCTOR
 			Mesh(std::string obj_path);
 			Mesh(const char* obj_path);
+			Mesh(const Mesh& other) = delete;
 			~Mesh();
 		#pragma endregion
 			inline virtual void SetActive() final;
@@ -29,8 +30,6 @@ namespace object {
 			inline GLuint get_vertex_buffer_object_identity() const;
 			inline GLuint get_vertex_array_object_identity() const;
 		private:
-			Mesh(const Mesh& other) = delete;
-
 		#pragma region RELATED_WITH_OPENGL
 			void GenerateAndBindVertexArrayObject();
 			void GenerateAndBindVertexBufferObject();

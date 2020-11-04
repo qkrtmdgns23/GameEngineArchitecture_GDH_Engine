@@ -28,7 +28,8 @@ namespace gdh_system {
 
 			return instance_;
 		}
-		~Game() {}
+		Game(const Game& other) = delete;
+		~Game() = default;
 	private:
 		Game();
 

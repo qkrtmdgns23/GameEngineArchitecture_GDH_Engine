@@ -18,10 +18,6 @@ namespace object {
 			, obj_scale_(other.obj_scale_)
 			, model_matrix_(other.model_matrix_)
 		{ }
-		Transform::~Transform()
-		{
-
-		}
 
 		void Transform::UpdateModelMatrix()
 		{

@@ -22,7 +22,8 @@ namespace gdh_system {
 		static const std::string state_id_;
 	#pragma region SINGLETON_PATTERN
 	public:
-		~PlayState() {}
+		PlayState(const PlayState& other) = delete;
+		~PlayState() = default;
 		static PlayState* get_instance()
 		{
 			if (instance_ == nullptr)

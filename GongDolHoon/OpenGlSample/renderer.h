@@ -20,9 +20,8 @@ namespace gdh_system {
 			return instance_;
 		}
 
-		~Renderer() {
-		
-		}
+		Renderer(const Renderer& other) = delete;
+		~Renderer() = default;
 
 	private:
 		Renderer(std::string window_title

@@ -10,7 +10,8 @@ namespace object {
 	{
 	public:
 		InvisibleObject(LoaderParams* p_param = NULL);
-		virtual ~InvisibleObject();
+		InvisibleObject(const InvisibleObject& other) = delete;
+		virtual ~InvisibleObject() = default;
 
 		virtual void Update() override;
 		virtual void Render() const override;

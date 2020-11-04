@@ -19,10 +19,10 @@ namespace gdh_system {
 
 			return instance_;
 		}
-
-		~FileManager() {}
+		FileManager(const FileManager& other) = delete;
+		~FileManager() = default;
 	private:
-		FileManager() {}
+		FileManager() = default;
 		static FileManager* instance_;
 
 	#pragma endregion

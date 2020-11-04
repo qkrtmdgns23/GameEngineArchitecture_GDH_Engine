@@ -6,7 +6,10 @@ namespace object
 	namespace component {
 		class InterfaceComponent {
 		public:
-			virtual ~InterfaceComponent() {}
+			InterfaceComponent() = default;
+			InterfaceComponent(const InterfaceComponent& other)
+				= delete;
+			virtual ~InterfaceComponent() = default;
 
 			virtual void SetActive() = 0;
 			virtual void SetUnActive() = 0;
