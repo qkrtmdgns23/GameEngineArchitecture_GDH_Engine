@@ -8,7 +8,8 @@
 namespace gdh_system {
 	namespace frame {
 		enum class DefinedFrame {
-			kRender = 60,
+			kPhysics = 30,
+			kRender = 120,
 			kLogic = 120,			
 		};
 
@@ -43,6 +44,7 @@ namespace gdh_system {
 	public:
 		inline bool IsRenderUpdatePossible();
 		inline bool IsLogicUpdatePossible();
+		inline bool IsPhysicsUpdatePossible();
 
 		inline long long get_delta_time() const;
 	private:
@@ -54,6 +56,7 @@ namespace gdh_system {
 
 		Frame render_;
 		Frame logic_;
+		Frame physics_;
 	};
 
 	long long Time::get_delta_time() const
@@ -69,6 +72,11 @@ namespace gdh_system {
 	bool Time::IsLogicUpdatePossible()
 	{
 		return IsFrameUpdate(logic_);
+	}
+
+	bool Time::IsPhysicsUpdatePossible()
+	{
+		return IsFrameUpdate(physics_);
 	}
 
 	bool Time::IsFrameUpdate(Frame& target)

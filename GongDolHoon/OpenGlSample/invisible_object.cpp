@@ -2,20 +2,28 @@
 
 namespace object {
 	InvisibleObject::InvisibleObject(LoaderParams* p_param)
-		:InterfaceObject(p_param)
+		:InterfaceObject(p_param), GongDolHoonBehaviour()
 	{
 	}
+
+	void InvisibleObject::Start()
+	{
+
+	}
+
+	// Invisible Object doesn't need Physics Update.
+	void InvisibleObject::FixedUpdate() {}
 
 	void InvisibleObject::Update()
 	{
-
 	}
-	void InvisibleObject::Render() const
+
+	// Invisible Object doesn't need Render Update.
+	void InvisibleObject::RenderObject() {}
+
+	void InvisibleObject::Destroy()
 	{
 
 	}
-	void InvisibleObject::Clean()
-	{
 
-	}
 }	// namespace object

@@ -819,6 +819,9 @@
     <ClInclude Include="time.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="gdh_behaviour.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\gtx\associated_min_max.inl">

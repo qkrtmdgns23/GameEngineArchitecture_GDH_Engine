@@ -22,19 +22,13 @@ namespace gdh_system {
 	}
 	void Game::Update()
 	{
-		if (Time::get_instance()->IsLogicUpdatePossible() == true)
-		{
-			PlayState::get_instance()->Update();
-		}
+		PlayState::get_instance()->Update();
 	}
 	void Game::Render()
 	{
-		if (Time::get_instance()->IsRenderUpdatePossible() == true)
-		{
-			Renderer::get_instance()->ClearWindow();
-			PlayState::get_instance()->Render();
-			Renderer::get_instance()->SwapBuffer();
-		}
+		Renderer::get_instance()->ClearWindow();
+		PlayState::get_instance()->Render();
+		Renderer::get_instance()->SwapBuffer();
 	}
 
 	void Game::ResizeFramebuffer(GLFWwindow* window, int width, int height)

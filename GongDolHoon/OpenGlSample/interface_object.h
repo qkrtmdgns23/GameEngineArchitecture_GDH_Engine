@@ -7,12 +7,8 @@ namespace object {
 	class InterfaceObject {
 	public:
 		InterfaceObject(const LoaderParams* params) {}
-		InterfaceObject(const InterfaceObject& other) = delete;
+		InterfaceObject(const InterfaceObject&) = delete;
 		virtual ~InterfaceObject() = default;
-
-		virtual void Update() = 0;
-		virtual void Render() const = 0;
-		virtual void Clean() = 0;
 	};
 } // namespace object
 

@@ -2,7 +2,7 @@
 #define GDH_ENGINE_GAMESTATE_H
 #include <string>
 #include <vector>
-#include "interface_object.h"
+#include "gdh_behaviour.h"
 
 namespace gdh_system {
 	class InterfaceGameState
@@ -12,7 +12,7 @@ namespace gdh_system {
 		InterfaceGameState(const InterfaceGameState& other) = delete;
 		virtual ~InterfaceGameState() = default;
 	protected:
-		std::vector <object::InterfaceObject*> game_objects_;
+		std::vector <gdh_system::GongDolHoonBehaviour*> game_objects_;
 
 	private:
 		virtual void Update() = 0;

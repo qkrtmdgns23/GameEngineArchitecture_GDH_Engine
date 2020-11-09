@@ -1,8 +1,7 @@
 #ifndef GDH_ENGINE_INTERFACE_COMPONENT_H
 #define GDH_ENGINE_INTERFACE_COMPONENT_H
 
-namespace object
-{
+namespace object {
 	namespace component {
 		class InterfaceComponent {
 		public:
