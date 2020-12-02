@@ -18,7 +18,7 @@
 |2|**3D Game Graphics**           |김재범 교수님            |2020.03~2020.06|
 |3|**3D Game Architecture**       |김재범 교수님            |2020.09~2020.12|
 |4|**C Unmanaged Programming** |Pope Kim            |2020.09~2020.10|
-|5|**Cpp Unmanaged Programming**|Pope Kim           |2020.10~|
+|5|**Cpp Unmanaged Programming**|Pope Kim           |2020.10~2020.11|
 
 ## 왜 main branch에 commit이 안되어 있나요?
 * 제 엔진을 통해 완성된 게임을 하나 제작을 완료한 후, main branch에 commit을 진행할 예정입니다. [develop_seunghoon](https://github.com/qkrtmdgns23/GameEngineArchitecture_GDH_Engine/tree/develop_seunghoon)에 코드 계속 커밋하고 있으니 코드 구경하고 싶으면 절로 가시면 돼요!
