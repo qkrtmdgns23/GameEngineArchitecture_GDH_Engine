@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Sources/Core/Imanager.h"
 #include "Sources/Util/singleton.h"
+#include "Sources/Render/window.h"
 
 namespace ambition
 {
@@ -26,8 +27,13 @@ namespace ambition
 			virtual void			Awake()										override;
 			virtual void			Update()									override;
 			virtual void			Destroy()									override;
+		public:
+			inline Window* GetWindow() const
+			{
+				return window_;
+			}
 		private:
-			class Window* window_;
+			Window* window_;
 			WindowInformation inform_;
 		};
 	}		// namespace render

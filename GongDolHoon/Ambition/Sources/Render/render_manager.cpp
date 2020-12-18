@@ -1,5 +1,5 @@
 #include "render_manager.h"
-#include "window.h"
+#include "Sources/Input/input_manager.h"
 
 namespace ambition
 {
@@ -22,13 +22,15 @@ namespace ambition
 
 			window_ = new Window(inform_.title, inform_.width, inform_.height);
 			
-			is_awake_ = true;
+			is_awake_ = true; 
 		}
 
 		void RenderManager::Update()
 		{
+			ambition::input::InputManager::GetInstance()->ProcessInputKeyboardPressed(window_->GetWindow());
 			/* Render here */
 			glClear(GL_COLOR_BUFFER_BIT);
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window_->GetWindow());

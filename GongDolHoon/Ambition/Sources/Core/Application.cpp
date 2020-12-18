@@ -27,10 +27,9 @@ namespace ambition
 			for (const auto& manager : managers_)
 			{
 				manager->Update();
-				is_all_update += manager->GetIsUpdate();
 			}
 
-			if (is_all_update == managers_.size())
+			if (managers_.back()->GetIsUpdate() == true)
 			{
 				is_update_ = true;
 			}

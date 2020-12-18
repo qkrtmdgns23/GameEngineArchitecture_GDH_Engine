@@ -18,7 +18,10 @@ namespace ambition
 			{
 				return primitive_window_;
 			}
-
+		// OpenGL Callback Function
+		public:
+			static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
+			
 		private:
 			GLFWwindow*			primitive_window_;
 			std::string			title_;
