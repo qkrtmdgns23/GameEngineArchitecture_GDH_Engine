@@ -10,6 +10,8 @@ namespace ambition
 {
 	namespace core
 	{
+		typedef std::map<std::string, std::shared_ptr<Manager>> Managers;
+
 		AMBITION_CLASS Application: public Manager, public util::Singleton<Application>
 		{
 		public:
@@ -22,9 +24,11 @@ namespace ambition
 			virtual void Destroy()	override;
 		// Composite & Template Method Pattern
 		protected:
-			virtual void	Add(std::shared_ptr<Manager> manager) override;
+			virtual void					 AddManager(std::string name, std::shared_ptr<Manager> manager) override;
+		public:
+			virtual std::shared_ptr<Manager> GetManager(std::string name) const;
 		private:
-			std::list<std::shared_ptr<Manager>> managers_;
+			Managers managers_;
 		};
 	}	// namespace core
 }		// namespace ambition

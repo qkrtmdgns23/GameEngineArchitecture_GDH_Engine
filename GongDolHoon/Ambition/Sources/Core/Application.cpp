@@ -15,7 +15,7 @@ namespace ambition
 		{
 			for (const auto& manager : managers_)
 			{
-				manager->Awake();
+				manager.second->Awake();
 			}
 			is_awake_ = true;
 		}
@@ -26,10 +26,10 @@ namespace ambition
 
 			for (const auto& manager : managers_)
 			{
-				manager->Update();
+				manager.second->Update();
 			}
 
-			if (managers_.back()->GetIsUpdate() == true)
+			if (GetManager("RENDER")->GetIsUpdate())
 			{
 				is_update_ = true;
 			}
@@ -39,14 +39,21 @@ namespace ambition
 		{
 			for (const auto& manager : managers_)
 			{
-				manager->Destroy();
+				manager.second->Destroy();
 			}
 			is_destroy_ = true;
+
+			
 		}
 
-		void Application::Add(std::shared_ptr<Manager> manager)
+		void Application::AddManager(std::string name, std::shared_ptr<Manager> manager)
 		{
-			managers_.push_back(manager);
+			managers_.insert(Managers::value_type(name, manager));
+		}
+
+		std::shared_ptr<Manager> Application::GetManager(std::string name) const
+		{
+			return managers_.find(name)->second;
 		}
 	}	// namespace core
 }		// namespace ambition

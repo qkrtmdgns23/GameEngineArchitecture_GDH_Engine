@@ -31,7 +31,7 @@ namespace ambition
 				}
 			}
 		public:
-			virtual void					 Add(std::shared_ptr<Manager> manager) {}
+			virtual void					 AddManager(std::string name, std::shared_ptr<Manager> manager) {}
 			virtual std::shared_ptr<Manager> Get(unsigned int index) {return nullptr;}
 			virtual void					 Awake()			abstract;
 			virtual void					 Update()			abstract;

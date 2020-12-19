@@ -11,6 +11,7 @@
 #include "framework.h"
 
 // OpenGL Lib
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 // C-Cpp Lib
@@ -19,5 +20,7 @@
 #include <string>
 #include <cstdint>
 #include <list>
+#include <map>
+#include <fstream>
 
 #endif //PCH_H

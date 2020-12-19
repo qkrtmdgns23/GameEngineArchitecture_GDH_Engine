@@ -5,6 +5,7 @@
 #include "Sources/Core/Imanager.h"
 #include "Sources/Util/singleton.h"
 #include "Sources/Render/window.h"
+#include "mesh_renderer.h"
 
 namespace ambition
 {
@@ -12,9 +13,9 @@ namespace ambition
 	{
 		AMBITION_STRUCT WindowInformation
 		{
-			const char*				title	= "Default Title";
-			unsigned int			width	= 640;
-			unsigned int			height	= 480;
+			const char*				title	= "Ambition Engine";
+			unsigned int			width	= 1024;
+			unsigned int			height	= 768;
 		};
 
 		AMBITION_CLASS RenderManager final: public core::Manager, public util::Singleton<RenderManager>
@@ -35,6 +36,11 @@ namespace ambition
 		private:
 			Window* window_;
 			WindowInformation inform_;
+			GLuint VAO;
+			GLuint VBO;
+			GLuint EBO;
+			MeshRenderer* temp_mesh;
+			
 		};
 	}		// namespace render
 }			// namespace ambition
