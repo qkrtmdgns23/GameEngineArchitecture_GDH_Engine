@@ -6,7 +6,7 @@ namespace ambition
 	{
 		MeshRenderer::MeshRenderer(MeshParams params)
 			: Component(), shader_(std::make_unique<Shader>(params.vertex_path, params.fragment_path))
-			, vao_(std::make_unique<VertexArrayObject>())
+			, vao_(std::make_unique<VertexArrayObject>()), is_ebo_active_(params.is_ebo_active)
 		{
 			
 		}
@@ -18,12 +18,13 @@ namespace ambition
 
 		void MeshRenderer::Awake()
 		{
+			vao_->SetBind(true);
 
 		}
 
 		void MeshRenderer::Update()
 		{
-
+			vao_->SetBind(true);
 		}
 
 		void MeshRenderer::Destroy()

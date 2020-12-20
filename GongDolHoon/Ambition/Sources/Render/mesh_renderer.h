@@ -15,6 +15,7 @@ namespace ambition
 		{
 			const char* vertex_path			= "";
 			const char* fragment_path		= "";
+			bool		is_ebo_active		= false;
 		};
 
 		AMBITION_CLASS MeshRenderer final: public core::Component
@@ -29,14 +30,26 @@ namespace ambition
 			virtual void Destroy()	final;
 
 		public:
+			inline void SetEBO(bool whether)
+			{
+				if (whether == true)
+				{
+					is_ebo_active_ = true;
+				}
+				else
+				{
+					is_ebo_active_ = false;
+				}
+			}
 			inline void SetShaderProgram(bool whether) const
 			{
 				shader_->SetUse(whether);
 			}
 			void		AddBufferInVAO(std::shared_ptr<Buffer> buffer, int index);
 		private:
-			 std::unique_ptr<Shader> shader_;
-			 std::unique_ptr<VertexArrayObject> vao_;
+			 std::unique_ptr<Shader>				shader_;
+			 std::unique_ptr<VertexArrayObject>		vao_;
+			 bool									is_ebo_active_;
 		};
 	}		// namespace render
 }			// namespace ambition

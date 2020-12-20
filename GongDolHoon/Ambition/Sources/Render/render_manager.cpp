@@ -36,6 +36,7 @@ namespace ambition
 				= "../Ambition/Resources/Shaders/Vertex/basic_shader.vs";
 			square_mesh_params.fragment_path
 				= "../Ambition/Resources/Shaders/Fragment/basic_shader.fs";
+			square_mesh_params.is_ebo_active = true;
 			temp_mesh = new MeshRenderer(square_mesh_params);
 
 			float vertices[] = {
@@ -52,7 +53,7 @@ namespace ambition
 			square_vao_ = std::make_unique<VertexArrayObject>();
 			std::shared_ptr<Buffer> vertex_position_ = std::make_shared<AttributeBuffer>(vertices, 0, 3, 12);
 			
-			square_vao_->SetBind(true);;
+			square_vao_->SetBind(true);
 			square_ebo_ = std::make_unique<IndexBuffer>(indices, 6);
 			square_vao_->AddBuffer(vertex_position_, 0);
 			
