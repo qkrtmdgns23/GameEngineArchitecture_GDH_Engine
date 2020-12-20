@@ -1,5 +1,7 @@
 #include "render_manager.h"
 #include "Sources/Input/input_manager.h"
+#include "Vertex/attribute_buffer.h"
+#include "Sources/Render/Vertex/Ibuffer.h"
 
 namespace ambition
 {
@@ -11,9 +13,6 @@ namespace ambition
 			is_awake_ = false;
 			is_update_ = false;
 			is_destroy_ = false;
-			VAO = NULL;
-			VBO = NULL;
-			EBO = NULL;
 		}
 
 		void RenderManager::Awake()
@@ -32,48 +31,35 @@ namespace ambition
 				glfwTerminate();
 			}
 
-			MeshParams temp_mesh_params;
-			temp_mesh_params.vertex_path
-				= "../Ambition/Sources/Render/basic_shader.vs";
-			temp_mesh_params.fragment_path
-				= "../Ambition/Sources/Render/basic_shader.fs";
-			temp_mesh = new MeshRenderer(temp_mesh_params);
+			MeshParams square_mesh_params;
+			square_mesh_params.vertex_path
+				= "../Ambition/Resources/Shaders/Vertex/basic_shader.vs";
+			square_mesh_params.fragment_path
+				= "../Ambition/Resources/Shaders/Fragment/basic_shader.fs";
+			temp_mesh = new MeshRenderer(square_mesh_params);
 
 			float vertices[] = {
-		 0.5f,  0.5f, 0.0f,  // top right
-		 0.5f, -0.5f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f   // top left 
+				 0.5f,  0.5f, 0.0f,  // top right
+				 0.5f, -0.5f, 0.0f,  // bottom right
+				-0.5f, -0.5f, 0.0f,  // bottom left
+				-0.5f,  0.5f, 0.0f   // top left 
 			};
 			unsigned int indices[] = {  // note that we start from 0!
 				0, 1, 3,  // first Triangle
 				1, 2, 3   // second Triangle
 			};
 
-			glGenVertexArrays(1, &VAO);
-			glGenBuffers(1, &VBO);
-			glGenBuffers(1, &EBO);
-			// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-			glBindVertexArray(VAO);
+			square_vao_ = std::make_unique<VertexArrayObject>();
+			std::shared_ptr<Buffer> vertex_position_ = std::make_shared<AttributeBuffer>(vertices, 0, 3, 12);
+			
+			square_vao_->SetBind(true);;
+			square_ebo_ = std::make_unique<IndexBuffer>(indices, 6);
+			square_vao_->AddBuffer(vertex_position_, 0);
+			
+			vertex_position_->SetBind(true);
 
-			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-			glEnableVertexAttribArray(0);
-
-			// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-			// remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-			// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-			// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
-			glBindVertexArray(0);
+			
+			square_vao_->SetBind(true);
 
 			is_awake_ = true;
 		}
@@ -81,20 +67,18 @@ namespace ambition
 		void RenderManager::Update()
 		{
 			ambition::input::InputManager::GetInstance()->ProcessInputKeyboardPressed(window_->GetWindow());
-			/* Render here */
+			
 			glClear(GL_COLOR_BUFFER_BIT);
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 			temp_mesh->SetShaderProgram(true);
 
-			glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-			//glDrawArrays(GL_TRIANGLES, 0, 6);
+			square_vao_->SetBind(true); 
+			
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-			/* Swap front and back buffers */
 			glfwSwapBuffers(window_->GetWindow());
 
-			/* Poll for and process events */
 			glfwPollEvents();
 
 			if (glfwWindowShouldClose(window_->GetWindow()))
@@ -105,9 +89,6 @@ namespace ambition
 
 		void RenderManager::Destroy()
 		{
-			glDeleteVertexArrays(1, &VAO);
-			glDeleteBuffers(1, &VBO);
-			glDeleteBuffers(1, &EBO);
 			glfwTerminate();
 			is_destroy_ = true;
 		}

@@ -6,3 +6,4 @@
 #define AMBITION_INTERFACE								class
 #define AMBITION_CLASS									class
 #define AMBITION_STRUCT									struct
+#define AMBITION_ENUM									enum class

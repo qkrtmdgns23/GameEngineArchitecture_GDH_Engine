@@ -167,6 +167,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Render\Vertex\Ibuffer.h" />
+    <ClInclude Include="Sources\Render\Vertex\index_buffer.h" />
+    <ClInclude Include="Sources\Render\Vertex\attribute_buffer.h" />
     <ClInclude Include="Sources\Render\shader.h" />
     <ClInclude Include="Sources\Input\file_reader.h" />
     <ClInclude Include="Sources\Render\mesh_renderer.h" />
@@ -181,9 +184,13 @@
     <ClInclude Include="Sources\Core\Imanager.h" />
     <ClInclude Include="Sources\Render\window.h" />
     <ClInclude Include="Sources\Util\singleton.h" />
+    <ClInclude Include="Sources\Render\Vertex\vertex_array_object.h" />
+    <ClInclude Include="Sources\Util\time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ambition.cpp" />
+    <ClCompile Include="Sources\Render\Vertex\index_buffer.cpp" />
+    <ClCompile Include="Sources\Render\Vertex\attribute_buffer.cpp" />
     <ClCompile Include="Sources\Render\shader.cpp" />
     <ClCompile Include="Sources\Input\file_reader.cpp" />
     <ClCompile Include="Sources\Render\mesh_renderer.cpp" />
@@ -192,10 +199,11 @@
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="Sources\Render\render_manager.cpp" />
     <ClCompile Include="Sources\Render\window.cpp" />
+    <ClCompile Include="Sources\Render\Vertex\vertex_array_object.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sources\Render\basic_shader.fs" />
-    <None Include="Sources\Render\basic_shader.vs" />
+    <None Include="Resources\Shaders\Fragment\basic_shader.fs" />
+    <None Include="Resources\Shaders\Vertex\basic_shader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,6 +6,7 @@ namespace ambition
 	{
 		MeshRenderer::MeshRenderer(MeshParams params)
 			: Component(), shader_(std::make_unique<Shader>(params.vertex_path, params.fragment_path))
+			, vao_(std::make_unique<VertexArrayObject>())
 		{
 			
 		}
@@ -15,9 +16,25 @@ namespace ambition
 
 		}
 
-		void MeshRenderer::Operation()
+		void MeshRenderer::Awake()
 		{
 
 		}
+
+		void MeshRenderer::Update()
+		{
+
+		}
+
+		void MeshRenderer::Destroy()
+		{
+
+		}
+
+		void MeshRenderer::AddBufferInVAO(std::shared_ptr<Buffer> buffer, int index)
+		{
+			vao_->AddBuffer(buffer, index);
+		}
+
 	}		// namespace render
 }			// namespace ambition

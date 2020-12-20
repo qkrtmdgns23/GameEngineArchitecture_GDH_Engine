@@ -5,6 +5,8 @@
 #include "Sources/Core/Imanager.h"
 #include "Sources/Util/singleton.h"
 #include "Sources/Render/window.h"
+#include "Sources/Render/Vertex/vertex_array_object.h"
+#include "Vertex/index_buffer.h"
 #include "mesh_renderer.h"
 
 namespace ambition
@@ -29,17 +31,16 @@ namespace ambition
 			virtual void			Update()									override;
 			virtual void			Destroy()									override;
 		public:
-			inline Window* GetWindow() const
+			inline Window*			GetWindow() const
 			{
 				return window_;
 			}
 		private:
-			Window* window_;
-			WindowInformation inform_;
-			GLuint VAO;
-			GLuint VBO;
-			GLuint EBO;
-			MeshRenderer* temp_mesh;
+			Window*								window_;
+			WindowInformation					inform_;
+			std::unique_ptr<VertexArrayObject>	square_vao_;
+			std::unique_ptr<IndexBuffer>		square_ebo_;			
+			MeshRenderer*						temp_mesh;
 			
 		};
 	}		// namespace render

@@ -23,4 +23,7 @@
 #include <map>
 #include <fstream>
 
+// Window Lib
+#include <Windows.h>
+
 #endif //PCH_H

@@ -57,6 +57,21 @@
     <ClInclude Include="Sources\Render\shader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Render\Vertex\attribute_buffer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Render\Vertex\Ibuffer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Render\Vertex\index_buffer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Render\Vertex\vertex_array_object.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Util\time.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ambition.cpp">
@@ -86,9 +101,18 @@
     <ClCompile Include="Sources\Render\shader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Render\Vertex\attribute_buffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Render\Vertex\index_buffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Render\Vertex\vertex_array_object.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sources\Render\basic_shader.vs" />
-    <None Include="Sources\Render\basic_shader.fs" />
+    <None Include="Resources\Shaders\Fragment\basic_shader.fs" />
+    <None Include="Resources\Shaders\Vertex\basic_shader.vs" />
   </ItemGroup>
 </Project>

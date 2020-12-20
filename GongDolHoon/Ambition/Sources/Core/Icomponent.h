@@ -21,7 +21,9 @@ namespace ambition
 			{
 				is_active_ = active;
 			}
-			virtual void		Operation()				abstract;
+			virtual void		Awake()				abstract;
+			virtual void		Update()			abstract;
+			virtual void		Destroy()			abstract;
 		protected:
 			bool is_active_ = false;
 		};
